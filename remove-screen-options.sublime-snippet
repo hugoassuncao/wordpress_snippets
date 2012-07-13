@@ -1,0 +1,17 @@
+<snippet>
+	<content><![CDATA[
+
+/// hide admin 'Screen Options' tab
+function remove_screen_options_tab() { return false; }
+add_filter('screen_options_show_screen', 'remove_screen_options_tab');
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>screenoptout</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+ 
+     <!-- Optional: Description to show in the menu -->
+    <description>Edit the footer text in wordpress admin area</description>
+</snippet>
+
+

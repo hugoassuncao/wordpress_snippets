@@ -1,0 +1,24 @@
+<snippet>
+	<content><![CDATA[
+
+// add a custom dashboard widget
+function ${1:your_dashboard_widget}() { ?>
+<h3>Hello Wordpress user!</h3>
+<p>Fill this with HTML or PHP.</p>
+<?php };
+function add_${1:your_dashboard_widget}() {
+  wp_add_dashboard_widget( '${1:your_dashboard_widget}', __( '${2:Your widget Title}' ), '${1:your_dashboard_widget}' );
+}
+add_action('wp_dashboard_setup', 'add_${1:your_dashboard_widget}' );
+
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>dashwidget</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+ 
+     <!-- Optional: Description to show in the menu -->
+    <description>Add a custom dashboard widget</description>
+</snippet>
+
+

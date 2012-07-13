@@ -1,0 +1,21 @@
+<snippet>
+	<content><![CDATA[
+
+// add a custom admin logo
+function custom_admin_logo() {
+  echo '<style type="text/css">
+          #header-logo { background-image: url('.get_bloginfo('template_directory').'/images/${1:yout_file_name.png}) !important; }
+        </style>';
+}
+add_action('admin_head', 'custom_admin_logo');
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>adminlogo</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+ 
+     <!-- Optional: Description to show in the menu -->
+    <description>Add a custom admin logo</description>
+</snippet>
+
+

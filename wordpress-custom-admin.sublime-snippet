@@ -1,0 +1,76 @@
+<snippet>
+	<content><![CDATA[
+
+
+/// change the url of login logo
+add_filter( 'login_headerurl', 'my_custom_login_url' );
+function my_custom_login_url(\$url) {
+	return '${1:http://www.example.com}';
+}
+
+
+/// add a custom logo to login screen
+function custom_login_logo() {
+    echo '<style type="text/css">
+        h1 a { background-image:url('.get_bloginfo('template_directory').'/images/${2:yout_file_name.png}) !important; }
+    </style>';
+}
+add_action('login_head', 'custom_login_logo');
+
+
+/// add a custom admin logo
+function custom_admin_logo() {
+  echo '<style type="text/css">
+          #header-logo { background-image: url('.get_bloginfo('template_directory').'/images/${3:yout_file_name.png}) !important; }
+        </style>';
+}
+add_action('admin_head', 'custom_admin_logo');
+
+
+/// custom footer text
+function remove_footer_admin () {
+  echo '${4:insert your custom text}.';
+}
+add_filter('admin_footer_text', 'remove_footer_admin');
+
+
+/// remove unused dashboard widgets
+function remove_dashboard_widgets() {
+  global \$wp_meta_boxes;
+  unset(\$wp_meta_boxes['dashboard']['normal']['core']['dashboard_plugins']);
+  unset(\$wp_meta_boxes['dashboard']['normal']['core']['dashboard_recent_comments']);
+  unset(\$wp_meta_boxes['dashboard']['normal']['core']['dashboard_incoming_links']);
+  unset(\$wp_meta_boxes['dashboard']['normal']['core']['dashboard_right_now']);
+  unset(\$wp_meta_boxes['dashboard']['side']['core']['dashboard_primary']);
+  unset(\$wp_meta_boxes['dashboard']['side']['core']['dashboard_secondary']);
+  unset(\$wp_meta_boxes['dashboard']['side']['core']['dashboard_quick_press']);
+  unset(\$wp_meta_boxes['dashboard']['side']['core']['dashboard_recent_drafts']);
+}
+add_action('wp_dashboard_setup', 'remove_dashboard_widgets' );
+
+
+/// add a custom dashboard widget
+function ${5:your_dashboard_widget}() { ?>
+<h3>Hello Wordpress user!</h3>
+<p>Fill this with HTML or PHP.</p>
+<?php };
+function add_${5:your_dashboard_widget}() {
+  wp_add_dashboard_widget( '${5:your_dashboard_widget}', __( '${2:Your widget Title}' ), '${5:your_dashboard_widget}' );
+}
+add_action('wp_dashboard_setup', 'add_${5:your_dashboard_widget}' );
+
+
+/// hide admin 'Screen Options' tab
+function remove_screen_options_tab() { return false; }
+add_filter('screen_options_show_screen', 'remove_screen_options_tab');
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>customadmin</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+ 
+     <!-- Optional: Description to show in the menu -->
+    <description>Change the appearance of wordpress admin ui</description>
+</snippet>
+
+

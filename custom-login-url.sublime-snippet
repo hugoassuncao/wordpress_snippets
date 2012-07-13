@@ -1,0 +1,20 @@
+<snippet>
+	<content><![CDATA[
+
+// change the url of login logo
+add_filter( 'login_headerurl', 'my_custom_login_url' );
+function my_custom_login_url(\$url) {
+	return '${1:http://www.example.com}';
+}
+
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>loginurl</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+ 
+     <!-- Optional: Description to show in the menu -->
+    <description>Change the url of login logo</description>
+</snippet>
+
+
