@@ -313,7 +313,7 @@ function show_${1:custom_meta}_box() {
 function ${1:custom_meta}_remove_taxonomy_boxes() {
 	remove_meta_box('categorydiv', 'post', 'side');
 }
-add_action( 'admin_menu' , 'remove_taxonomy_boxes' );
+add_action( 'admin_menu' , '${1:custom_meta}_remove_taxonomy_boxes' );
 
 // Save the Data
 function save_${1:custom_meta}(\$post_id) {
